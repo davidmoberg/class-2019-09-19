@@ -1,0 +1,25 @@
+---
+title: "Enrollment"
+author: "David Moberg"
+date: "9/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(readxl)
+library(tidyverse)
+library(knitr)
+```
+
+```{r}
+enrollment <- read_xlsx("class_enrollment_summary_by_term_9.19.19.xlsx", skip = 3)
+
+enrollment %>%filter(`Course Department` == "English")%>%arrange(desc(Total))%>%select(`Course Name`, `Instructor Full Name`, Total)%>%kable()
+
+
+
+
+```
+
+
